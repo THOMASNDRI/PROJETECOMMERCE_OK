@@ -67,7 +67,7 @@ class ProductController extends AbstractController
 
         $formView = $form->createView();
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             // $product = $form->getData();
             $product->setSlug(strtolower($slugger->slug($product->getName())));
 
@@ -101,7 +101,7 @@ class ProductController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             // $product = $form->getData();
             $product->setSlug(strtolower($slugger->slug($product->getName())));
             $em->flush();

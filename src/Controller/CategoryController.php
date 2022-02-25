@@ -24,7 +24,7 @@ class CategoryController extends AbstractController
         $form->handleRequest($request);
         $formView = $form->createView();
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $category
                 ->setSlug(strtolower($slugger->slug($category->getName())))
                 ->setName(ucwords($category->getName()));
@@ -54,7 +54,7 @@ class CategoryController extends AbstractController
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $category
                 ->setSlug(strtolower($slugger->slug($category->getName())))
                 ->setName(ucwords($category->getName()));
