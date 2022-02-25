@@ -20,7 +20,7 @@
 						<p class="card-text">
 							{{ prod.shortDescription }}
 						</p>
-						<a href="#" class="btn btn-primary btn-sm">Détails</a>
+						<a href="{{path('product_show', {'category_slug': prod.category.slug, 'slug': prod.slug})}}" class="btn btn-primary btn-sm">Détails</a>
 						<a href="#" class="btn btn-success btn-sm">Ajouter</a>
 					</div>
 				</div>
@@ -30,7 +30,7 @@
 	<hr>
 	<h2>Service irreprochable</h2>
 	<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat beatae error fugit
-																																								     perspiciatis est quod?</p>
+																																																						     perspiciatis est quod?</p>
 	<div class="row">
 		{% include "shared/_assurance.html.twig" with {
             'color' : 'primary',
