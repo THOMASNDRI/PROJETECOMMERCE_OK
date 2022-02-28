@@ -14,6 +14,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CategoryController extends AbstractController
 {
+    // protected $categoryRepository;
+    // public function __construct(CategoryRepository $categoryRepository)
+    // {
+    //     $this->$categoryRepository = $categoryRepository;
+    // }
+
+    // public function renderMenuList()
+    // {
+    //     $categories = $this->categoryRepository->findAll();
+    // }
+
     /**
      * @Route("/admin/category/create", name="category_create")
      */
