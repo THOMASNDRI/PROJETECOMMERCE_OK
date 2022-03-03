@@ -7,6 +7,7 @@ use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,7 +20,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/{slug}", name="product_category")
+     * @Route("/category/{slug}", name="product_category", priority=-1)
      */
     public function category($slug, CategoryRepository $categoryRepository): Response
     {
@@ -54,6 +55,7 @@ class ProductController extends AbstractController
 
     /**
      * @Route("/admin/product/create", name="product_create")
+     * @IsGranted("ROLE_ADMIN", message="Vous n'avez pas le droit d'acceder à cette ressource")
      */
     public function create(
         EntityManagerInterface $em,
@@ -86,6 +88,7 @@ class ProductController extends AbstractController
 
     /**
      * @Route("/admin/product/{id}/edit", name="product_edit")
+     * @IsGranted("ROLE_ADMIN", message="Vous n'avez pas le droit d'acceder à cette ressource")
      */
     public function edit(
         $id,
@@ -94,6 +97,8 @@ class ProductController extends AbstractController
         EntityManagerInterface $em,
         SluggerInterface $slugger
     ) {
+//        $this->denyAccessUnlessGranted("ROLE_ADMIN", null, "Vous n'avez pas le droit d'acceder
+//        à cette ressource");
         $product = $productRepository->find($id);
 
         $form = $this->createForm(ProductType::class, $product);
