@@ -20,7 +20,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/category/{slug}", name="product_category", priority=-1)
+     * @Route("/{slug}", name="product_category", priority=-1)
      */
     public function category($slug, CategoryRepository $categoryRepository): Response
     {

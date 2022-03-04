@@ -33,7 +33,7 @@
 			<p>
 				{{ product.shortDescription }}
 			</p>
-			<a href="" class="btn btn-success btn-bg">
+			<a href="{{ path('cart_add', {'id': product.id}) }}" class="btn btn-success btn-bg">
 				<i class="fas fa-shopping-cart"></i>
 				Ajouter au panier
 			</a>
