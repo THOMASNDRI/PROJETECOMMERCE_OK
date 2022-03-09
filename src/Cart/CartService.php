@@ -27,6 +27,10 @@ class CartService{
         $this->session->set('cart', $cart);
     }
 
+    public function empty(){
+        $this->saveCart([]);
+    }
+
     public function add(int $id){
 
         // 1. Retrouver le panier dans la session (sous forme de tableau)
@@ -81,6 +85,9 @@ class CartService{
         return $total;
     }
 
+    /**
+     * @return CartItem[]
+     */
     public function getDetailedItems():array {
         $detailedCart = [];
 
